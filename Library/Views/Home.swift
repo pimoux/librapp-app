@@ -1,13 +1,13 @@
 //
-//  ContentView.swift
+//  Home.swift
 //  Library
 //
-//  Created by LUKA Vouillemont on 02/01/2022.
+//  Created by LUKA Vouillemont on 06/02/2022.
 //
 
 import SwiftUI
 
-struct ContentView: View {
+struct Home: View {
     @StateObject var bookVM = BookViewModel()
     @StateObject var authorVM = AuthorViewModel()
     var body: some View {
@@ -40,8 +40,8 @@ struct ContentView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        Home()
     }
 }
