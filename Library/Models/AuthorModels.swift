@@ -1,21 +1,11 @@
 //
-//  Models.swift
+//  AuthorModels.swift
 //  Library
 //
-//  Created by LUKA Vouillemont on 13/01/2022.
+//  Created by LUKA Vouillemont on 06/02/2022.
 //
 
 import Foundation
-
-let baseURL: String = "https://librapp-back.herokuapp.com/api"
-
-struct BookModel: Decodable {
-    var id: Int?
-    var title: String
-    var nbPages: Int?
-    var prix: Double?
-    var author: AuthorModel?
-}
 
 struct AuthorBookModel: Decodable {
     var id: Int
@@ -37,15 +27,6 @@ struct AuthorModel: Decodable {
     var datns: String?
     var location: String?
     var iri: String?
-}
-
-struct BooksResponse: Decodable {
-    enum CodingKeys: String, CodingKey {
-        case books = "hydra:member"
-        case booksNumber = "hydra:totalItems"
-    }
-    var books: [BookModel]
-    var booksNumber: Int
 }
 
 struct AuthorBookResponse: Decodable {

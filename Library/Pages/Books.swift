@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Books: View {
     @State private var searchFilter: String = ""
-    @EnvironmentObject var bookList: BookHandler
+    @EnvironmentObject var bookVM: BookViewModel
     @State private var isPresented: Bool = false
     var body: some View {
         NavigationView {
@@ -29,8 +29,8 @@ struct Books: View {
                     .padding(.top, 20)
                     
                     List {
-                        Section(header: Text("\(bookList.books.filter({$0.title.lowercased().contains(searchFilter.lowercased()) || searchFilter.isEmpty}).count) LIVRES DISPONIBLES")) {
-                            ForEach(bookList.books.filter({$0.title.lowercased().contains(searchFilter.lowercased()) || searchFilter.isEmpty}), id: \.id) { book in
+                        Section(header: Text("\(bookVM.books.filter({$0.title.lowercased().contains(searchFilter.lowercased()) || searchFilter.isEmpty}).count) LIVRES DISPONIBLES")) {
+                            ForEach(bookVM.books.filter({$0.title.lowercased().contains(searchFilter.lowercased()) || searchFilter.isEmpty}), id: \.id) { book in
                                 NavigationLink(destination: BookDetail(book: book)) {
                                     HStack {
                                         Text(book.title)
@@ -70,6 +70,6 @@ struct Books: View {
 struct Books_Previews: PreviewProvider {
     static var previews: some View {
         Books()
-            .environmentObject(BookHandler())
+            .environmentObject(BookViewModel())
     }
 }

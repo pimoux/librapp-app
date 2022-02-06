@@ -1,5 +1,5 @@
 //
-//  AuthorHandler.swift
+//  BookHandler.swift
 //  Library
 //
 //  Created by LUKA Vouillemont on 13/01/2022.
@@ -7,17 +7,16 @@
 
 import Foundation
 
-class AuthorHandler: ObservableObject {
-    @Published var authors = [AuthorModel]()
-    @Published var authorsNumber: Int = 0
+class BookViewModel: ObservableObject {
+    @Published var books = [BookModel]()
+    @Published var booksNumber: Int = 0
     
     init() {
-        self.getAuthors()
+        self.getBooks()
     }
     
-    public func getAuthors() {
-        guard let url = URL(string: "\(baseURL)/authors") else {
-            print("ERROR WITH URL")
+    public func getBooks() {
+        guard let url = URL(string: "\(baseURL)/books") else {
             return
         }
         
@@ -27,10 +26,10 @@ class AuthorHandler: ObservableObject {
             }
             
             do {
-                let decodedResponse = try JSONDecoder().decode(AuthorsResponse.self, from: data)
+                let decodedResponse = try JSONDecoder().decode(BooksResponse.self, from: data)
                 DispatchQueue.main.async {
-                    self.authors = decodedResponse.authors
-                    self.authorsNumber = decodedResponse.authorsNumber
+                    self.books = decodedResponse.books
+                    self.booksNumber = decodedResponse.booksNumber
                 }
             } catch let DecodingError.dataCorrupted(context) {
                 print(context)
@@ -46,11 +45,12 @@ class AuthorHandler: ObservableObject {
             } catch {
                 print("error: ", error)
             }
+
         }.resume()
     }
     
-    public func createAuthor(body: [String: Any]) {
-        guard let url = URL(string: "\(baseURL)/authors") else {
+    public func createBook(body: [String: Any]) {
+        guard let url = URL(string: "\(baseURL)/books") else {
             return
         }
         
@@ -66,20 +66,33 @@ class AuthorHandler: ObservableObject {
             if let response = response as? HTTPURLResponse {
                 if response.statusCode == 201 {
                     DispatchQueue.main.async {
-                        self.getAuthors()
+                        self.getBooks()
                     }
                 } else {
-                    print("An error occured in create author: status \(response.statusCode)")
+                    print("An error occured in create book: status \(response.statusCode)")
                 }
             }
         }.resume()
     }
     
-    public func editAuthor(id: Int, body: [String: Any]) {
-        guard let url = URL(string: "\(baseURL)/authors/\(id)") else {
+    public func editBook(id: Int, title: String?, nbPages: Int?, cost prix: Double?, writtenBy author: String?) {
+        guard let url = URL(string: "\(baseURL)/books/\(id)") else {
             return
         }
         
+        var body: [String: Any] = [:]
+        if let title = title {
+            body["title"] = title
+        }
+        if let nbPages = nbPages {
+            body["nbPages"] = nbPages
+        }
+        if let prix = prix {
+            body["prix"] = prix
+        }
+        if let author = author {
+            body["author"] = author
+        }
         var request = URLRequest(url: url)
         let serializedBody = try? JSONSerialization.data(withJSONObject: body, options: [])
         
@@ -87,7 +100,8 @@ class AuthorHandler: ObservableObject {
         request.httpBody = serializedBody
         request.setValue("application/merge-patch+json", forHTTPHeaderField: "Content-Type")
         
-        URLSession.shared.dataTask(with: request) { (data, response, error) in
+        let session = URLSession.shared
+        let task = session.dataTask(with: request) { (data, response, error) in
             if let error = error {
                 print(error.localizedDescription)
             }
@@ -100,19 +114,21 @@ class AuthorHandler: ObservableObject {
                 }
                 if let response = response as? HTTPURLResponse {
                     if response.statusCode == 200 {
-                        print("author edited successfully")
+                        print("book edited successfully")
                     } else if response.statusCode == 404 {
-                        print("author not found")
+                        print("book not found")
                     }
                 }
             } catch {
                 print(error.localizedDescription)
             }
-        }.resume()
+        }
+        
+        task.resume()
     }
     
-    public func deleteAuthor(id: Int) {
-        guard let url = URL(string: "\(baseURL)/authors/\(id)") else {
+    public func deleteBook(id: Int) {
+        guard let url = URL(string: "\(baseURL)/books/\(id)") else {
             return
         }
         
@@ -127,9 +143,9 @@ class AuthorHandler: ObservableObject {
             
             if let response = response as? HTTPURLResponse {
                 if response.statusCode == 204 {
-                    print("author deleted")
+                    print("book deleted")
                 } else if response.statusCode == 404 {
-                    print("author not found")
+                    print("book not found")
                 }
             }
         }

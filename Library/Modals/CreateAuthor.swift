@@ -14,7 +14,7 @@ struct CreateAuthor: View {
     @State private var location: String = ""
     @State private var isAlert: Bool = false
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var authorHandler: AuthorHandler
+    @EnvironmentObject var authorVM: AuthorViewModel
     
     init() {
         UITableView.appearance().backgroundColor = .clear
@@ -28,7 +28,7 @@ struct CreateAuthor: View {
                 "datns": Date.ISOStringFromDate(date: datns),
                 "location": location
             ]
-            authorHandler.createAuthor(body: body)
+            authorVM.createAuthor(body: body)
             presentationMode.wrappedValue.dismiss()
         } else {
             isAlert.toggle()

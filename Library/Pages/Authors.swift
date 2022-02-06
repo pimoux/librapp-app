@@ -9,7 +9,7 @@ import SwiftUI
 
 struct Authors: View {
     @State private var searchFilter: String = ""
-    @EnvironmentObject var authorHandler: AuthorHandler
+    @EnvironmentObject var authorVM: AuthorViewModel
     @State private var isPresentedCreateAuthor: Bool = false
     var body: some View {
         NavigationView {
@@ -29,8 +29,8 @@ struct Authors: View {
                     .padding(.top, 20)
                     
                     List {
-                        Section(header: Text("\(authorHandler.authors.filter({$0.firstname.contains(searchFilter) || $0.lastname.contains(searchFilter) || searchFilter.isEmpty}).count) AUTEURS DISPONIBLES")) {
-                            ForEach(authorHandler.authors.filter({$0.firstname.contains(searchFilter) || $0.lastname.contains(searchFilter) || searchFilter.isEmpty}), id: \.id) { author in
+                        Section(header: Text("\(authorVM.authors.filter({$0.firstname.contains(searchFilter) || $0.lastname.contains(searchFilter) || searchFilter.isEmpty}).count) AUTEURS DISPONIBLES")) {
+                            ForEach(authorVM.authors.filter({$0.firstname.contains(searchFilter) || $0.lastname.contains(searchFilter) || searchFilter.isEmpty}), id: \.id) { author in
                                 NavigationLink(destination: AuthorDetail(author: author)) {
                                     HStack {
                                         Text("\(author.firstname) \(author.lastname)")
@@ -75,6 +75,6 @@ struct Authors: View {
 struct Authors_Previews: PreviewProvider {
     static var previews: some View {
         Authors()
-            .environmentObject(AuthorHandler())
+            .environmentObject(AuthorViewModel())
     }
 }

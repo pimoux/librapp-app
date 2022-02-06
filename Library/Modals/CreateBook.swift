@@ -15,8 +15,8 @@ struct CreateBook: View {
     @State private var selectedAuthor: String = ""
     @State private var isAlert: Bool = false
     @Environment(\.presentationMode) var presentationMode
-    @EnvironmentObject var authorHandler: AuthorHandler
-    @EnvironmentObject var bookHandler: BookHandler
+    @EnvironmentObject var authorVM: AuthorViewModel
+    @EnvironmentObject var bookVM: BookViewModel
     
     init() {
         UITableView.appearance().backgroundColor = .clear
@@ -31,7 +31,7 @@ struct CreateBook: View {
                     "prix": prix,
                     "author": selectedAuthor
                 ]
-                bookHandler.createBook(body: body)
+                bookVM.createBook(body: body)
                 presentationMode.wrappedValue.dismiss()
             } else {
                 isAlert.toggle()
@@ -86,7 +86,7 @@ struct CreateBook: View {
                         }
                         Section(header: Text("")) {
                             Picker("Auteur", selection: $selectedAuthor) {
-                                ForEach(authorHandler.authors.sorted{ (cur, new) in
+                                ForEach(authorVM.authors.sorted{ (cur, new) in
                                     return cur.firstname < new.firstname
                                 }, id: \.id) { author in
                                     Text("\(author.firstname) \(author.lastname)").tag(author.iri!)
@@ -111,7 +111,7 @@ struct CreateBook: View {
 struct CreateBook_Previews: PreviewProvider {
     static var previews: some View {
         CreateBook()
-            .environmentObject(AuthorHandler())
-            .environmentObject(BookHandler())
+            .environmentObject(AuthorViewModel())
+            .environmentObject(BookViewModel())
     }
 }

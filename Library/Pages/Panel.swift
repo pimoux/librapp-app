@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct Panel: View {
-    @EnvironmentObject private var books: BookHandler
-    @EnvironmentObject private var authors: AuthorHandler
+    @EnvironmentObject private var booksVM: BookViewModel
+    @EnvironmentObject private var authorsVM: AuthorViewModel
     var body: some View {
         NavigationView {
             VStack {
@@ -19,8 +19,8 @@ struct Panel: View {
                     .font(.largeTitle)
                 List {
                     Section(header: Text("VOTRE BIBLIOTHEQUE")) {
-                        Text("\(authors.authorsNumber) Auteurs")
-                        Text("\(books.booksNumber) Bouquins")
+                        Text("\(authorsVM.authorsNumber) Auteurs")
+                        Text("\(booksVM.booksNumber) Bouquins")
                     }
                 }
                 .navigationBarTitle("Admin", displayMode: .inline)
@@ -34,7 +34,7 @@ struct Panel: View {
 struct Panel_Previews: PreviewProvider {
     static var previews: some View {
         Panel()
-            .environmentObject(BookHandler())
-            .environmentObject(AuthorHandler())
+            .environmentObject(BookViewModel())
+            .environmentObject(AuthorViewModel())
     }
 }

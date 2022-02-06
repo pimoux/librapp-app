@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject var bookHandler = BookHandler()
-    @StateObject var authorHandler = AuthorHandler()
+    @StateObject var bookVM = BookViewModel()
+    @StateObject var authorVM = AuthorViewModel()
     var body: some View {
         TabView {
             Panel()
@@ -34,8 +34,8 @@ struct ContentView: View {
                     }
                 }
         }
-        .environmentObject(bookHandler)
-        .environmentObject(authorHandler)
+        .environmentObject(bookVM)
+        .environmentObject(authorVM)
         .accentColor(darkBlue)
     }
 }
