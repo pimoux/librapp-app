@@ -27,16 +27,10 @@ struct Login: View {
                 
                 return AnyView(
                     ZStack {
-                        Circle()
-                            .fill(Color.darkSet)
-                            .offset(x: getRect().width / 2, y: -height / 1.3)
-                        Circle()
-                            .fill(Color.darkSet)
-                            .offset(x: -getRect().width / 2, y: -height / 1.5)
-                        Circle()
-                            .fill(Color.turquoiseSet)
-                            .offset(y: -height / 1.3)
-                            .rotationEffect(.init(degrees: -5))
+                        CircleItem(color: .darkSet, x: getRect().width / 2, y: -height / 1.3)
+                        CircleItem(color: .darkSet, x: -getRect().width / 2, y: -height / 1.5)
+                        CircleItem(color: .turquoiseSet, x: 0, y: -height / 1.3)
+                        .rotationEffect(.init(degrees: -5))
                     }
                 )
             }
@@ -50,33 +44,21 @@ struct Login: View {
                     .kerning(1.9)
                     .frame(maxWidth: .infinity, alignment: .leading)
                 
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Adresse mail")
-                        .fontWeight(.bold)
-                        .foregroundColor(.gray)
-                    
-                    TextField("john@doe.com", text: $credentials.email)
-                        .font(.system(size: 20, weight: .semibold))
-                        .foregroundColor(.darkSet)
-                        .padding(.top, 5)
-                    
-                    Divider()
-                }
-                .padding(.top, 25)
+                EntryField(
+                    placeholder: "john@doe.com",
+                    label: "Adresse mail",
+                    textContent: $credentials.email,
+                    paddingValue: 25,
+                    isSecure: false
+                )
                 
-                VStack(alignment: .leading, spacing: 8) {
-                    Text("Mot de passe")
-                        .fontWeight(.bold)
-                        .foregroundColor(.gray)
-                    
-                    SecureField("blablabla", text: $credentials.password)
-                        .font(.system(size: 20, weight: .semibold))
-                        .foregroundColor(.darkSet)
-                        .padding(.top, 5)
-                    
-                    Divider()
-                }
-                .padding(.top, 20)
+                EntryField(
+                    placeholder: "blablabla",
+                    label: "Mot de passe",
+                    textContent: $credentials.password,
+                    paddingValue: 20,
+                    isSecure: true
+                )
                 
                 Button {
                     print("salut")
@@ -124,17 +106,13 @@ struct Login: View {
         )
         .background(
             HStack {
-                Circle()
-                    .fill(Color.turquoiseSet)
-                    .frame(width: 70, height: 70)
-                    .offset(x: -30, y: 0)
+                CircleItem(color: .turquoiseSet, x: -30, y: 0)
+                .frame(width: 70, height: 70)
                 
                 Spacer(minLength: 0)
                 
-                Circle()
-                    .fill(Color.darkSet)
-                    .frame(width: 110, height: 110)
-                    .offset(x: 40, y: 20)
+                CircleItem(color: .darkSet, x: 40, y: 20)
+                .frame(width: 110, height: 110)
             }
                 .offset(y: getSafeArea().bottom + 30),
             alignment: .bottom

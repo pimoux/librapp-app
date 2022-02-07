@@ -14,7 +14,6 @@ func doSomething() {
 struct SubmitButton: View {
     var callback: ()
     var label: String
-    
     var body: some View {
         Button {
             callback
