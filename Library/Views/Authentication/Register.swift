@@ -8,11 +8,7 @@
 import SwiftUI
 
 struct Register: View {
-    @State private var firstname: String = ""
-    @State private var lastname: String = ""
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var repeatPassword: String = ""
+    @State private var registerData = RegisterModel()
     
     public func createAccount() {
         
@@ -28,35 +24,40 @@ struct Register: View {
                 HStack {
                     RegisterField(
                         placeholder: "Prénom",
-                        textContent: $firstname,
+                        textContent: $registerData.firstname,
                         paddingDirection: .trailing,
-                        paddingValue: 5
+                        paddingValue: 5,
+                        isSecure: false
                     )
                     RegisterField(
                         placeholder: "Nom",
-                        textContent: $lastname,
+                        textContent: $registerData.lastname,
                         paddingDirection: .leading,
-                        paddingValue: 5
+                        paddingValue: 5,
+                        isSecure: false
                     )
                 }
                 .padding(.vertical, 10)
                 RegisterField(
                     placeholder: "Email",
-                    textContent: $email,
+                    textContent: $registerData.email,
                     paddingDirection: .vertical,
-                    paddingValue: 10
+                    paddingValue: 10,
+                    isSecure: false
                 )
                 RegisterField(
                     placeholder: "Mot de passe",
-                    textContent: $password,
+                    textContent: $registerData.password,
                     paddingDirection: .vertical,
-                    paddingValue: 10
+                    paddingValue: 10,
+                    isSecure: true
                 )
                 RegisterField(
                     placeholder: "Répéter mot de passe",
-                    textContent: $repeatPassword,
+                    textContent: $registerData.repeatPassword,
                     paddingDirection: .vertical,
-                    paddingValue: 10
+                    paddingValue: 10,
+                    isSecure: true
                 )
                 SubmitButton(callback: createAccount(), label: "Créer")
                     .padding(.top, 30)
@@ -66,7 +67,7 @@ struct Register: View {
                     NavigationLink(destination: Login()) {
                         Text("Connectez vous ici")
                             .bold()
-                            .foregroundColor(darkBlue)
+                            .foregroundColor(.darkBlueSet)
                     }
                 }
                 .padding(.vertical, 20)

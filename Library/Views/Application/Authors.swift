@@ -14,7 +14,7 @@ struct Authors: View {
     var body: some View {
         NavigationView {
             ZStack {
-                lightgrayNav.edgesIgnoringSafeArea(.top)
+                Color.lightgraySet.edgesIgnoringSafeArea(.top)
                 VStack {
                     VStack {
                         HStack {
@@ -22,7 +22,7 @@ struct Authors: View {
                             TextField("Search", text: $searchFilter)
                         }
                         .padding(10)
-                        .background(lightgrayField)
+                        .background(Color("lightgrayField"))
                         .cornerRadius(8)
                     }
                     .padding(.horizontal, 20)
@@ -42,7 +42,7 @@ struct Authors: View {
                     .sheet(isPresented: $isPresentedCreateAuthor) {
                         CreateAuthor()
                     }
-                    .background(lightgray)
+                    .background(Color("lightgray"))
                     .listStyle(.plain)
                 }
                 .navigationBarTitle("Auteurs", displayMode: .inline)
@@ -56,18 +56,18 @@ struct Authors: View {
             self.isPresentedCreateAuthor.toggle()
         } label: {
             Image(systemName: "plus")
-                .foregroundColor(darkBlue)
+                .foregroundColor(.darkBlueSet)
         }
     }
     
     var editAuthor: some View {
 //        NavigationLink(destination: EditAuthor()) {
 //            Text("edit")
-//                .foregroundColor(darkBlue)
+//                .foregroundColor(.darkBlueSet)
 //                .fontWeight(.regular)
 //        }
         Text("edit")
-            .foregroundColor(darkBlue)
+            .foregroundColor(.darkBlueSet)
             .fontWeight(.regular)
     }
 }

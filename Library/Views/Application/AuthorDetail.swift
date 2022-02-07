@@ -59,7 +59,7 @@ struct AuthorDetail: View {
     
     var body: some View {
         ZStack {
-            lightgray.ignoresSafeArea(.all)
+            Color.lightgraySet.ignoresSafeArea(.all)
             List {
                 Section(header: Text("Détails")
                             .bold()
@@ -102,7 +102,7 @@ struct AuthorDetail: View {
                 }
             }
             .listStyle(.plain)
-            .background(lightgray)
+            .background(Color("lightgray"))
             .onAppear {
                 getAuthorBooks()
             }

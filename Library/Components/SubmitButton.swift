@@ -24,7 +24,7 @@ struct SubmitButton: View {
                 .font(.title3)
                 .frame(maxWidth: .infinity)
                 .padding(.vertical)
-                .background(darkBlue)
+                .background(Color("darkBlue"))
                 .foregroundColor(.white)
                 .cornerRadius(10)
         }

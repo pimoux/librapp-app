@@ -14,7 +14,7 @@ struct Books: View {
     var body: some View {
         NavigationView {
             ZStack {
-                lightgray.edgesIgnoringSafeArea(.all)
+                Color.lightgraySet.edgesIgnoringSafeArea(.all)
                 VStack {
                     VStack {
                         HStack {
@@ -22,7 +22,7 @@ struct Books: View {
                             TextField("Search", text: $searchFilter)
                         }
                         .padding(10)
-                        .background(lightgrayField)
+                        .background(Color("lightgrayField"))
                         .cornerRadius(8)
                     }
                     .padding(.horizontal, 20)
@@ -42,7 +42,7 @@ struct Books: View {
                     .sheet(isPresented: $isPresented) {
                         CreateBook()
                     }
-                    .background(lightgray)
+                    .background(Color("lightgray"))
                     .listStyle(.plain)
                 }
                 .navigationBarTitle("Livres", displayMode: .inline)
@@ -56,13 +56,13 @@ struct Books: View {
             self.isPresented.toggle()
         } label: {
             Image(systemName: "plus")
-                .foregroundColor(darkBlue)
+                .foregroundColor(.darkBlueSet)
         }
     }
     
     var editBook: some View {
         Text("edit")
-            .foregroundColor(darkBlue)
+            .foregroundColor(.darkBlueSet)
             .fontWeight(.regular)
     }
 }

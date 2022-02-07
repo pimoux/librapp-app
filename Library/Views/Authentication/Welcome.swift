@@ -9,7 +9,14 @@ import SwiftUI
 
 struct Welcome: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationView {
+            VStack {
+                Text("Bienvenue sur librapp !")
+                    .bold()
+                    .font(.largeTitle)
+                
+            }
+        }
     }
 }
 

@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct Login: View {
-    @State private var email: String = ""
-    @State private var password: String = ""
+    @State private var credentials = LoginModel()
     
     public func login() {
         
@@ -26,20 +25,22 @@ struct Login: View {
                 .padding(.vertical)
             RegisterField(
                 placeholder: "Email",
-                textContent: $email,
+                textContent: $credentials.email,
                 paddingDirection: .vertical,
-                paddingValue: 10
+                paddingValue: 10,
+                isSecure: false
             )
             RegisterField(
                 placeholder: "Mot de passe",
-                textContent: $password,
+                textContent: $credentials.password,
                 paddingDirection: .vertical,
-                paddingValue: 10
+                paddingValue: 10,
+                isSecure: true
             )
             HStack {
                 Spacer()
                 Text("Mot de passe oublié?")
-                    .foregroundColor(darkBlue)
+                    .foregroundColor(.darkBlueSet)
             }
             SubmitButton(callback: login(), label: "Se connecter")
                 .padding(.top, 30)
@@ -48,7 +49,7 @@ struct Login: View {
                     .fontWeight(.medium)
                 Text("Inscrivez vous ici")
                     .bold()
-                    .foregroundColor(darkBlue)
+                    .foregroundColor(.darkBlueSet)
             }
             .padding(.vertical, 20)
         }

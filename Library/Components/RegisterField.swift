@@ -12,18 +12,34 @@ struct RegisterField: View {
     var textContent: Binding<String>
     var paddingDirection: Edge.Set
     var paddingValue: Int
+    var isSecure: Bool
     var body: some View {
-        TextField(placeholder, text: textContent)
-            .padding()
-            .background(lightgrayField)
-            .cornerRadius(10)
-            .padding(paddingDirection, CGFloat(paddingValue))
-            .foregroundColor(lightgrayEditItem)
+        if isSecure {
+            SecureField(placeholder, text: textContent)
+                .padding()
+                .background(Color("lightgrayField"))
+                .cornerRadius(10)
+                .padding(paddingDirection, CGFloat(paddingValue))
+                .foregroundColor(.lightgrayEditItemSet)
+        } else {
+            TextField(placeholder, text: textContent)
+                .padding()
+                .background(Color("lightgrayField"))
+                .cornerRadius(10)
+                .padding(paddingDirection, CGFloat(paddingValue))
+                .foregroundColor(.lightgrayEditItemSet)
+        }
     }
 }
 
 struct RegisterField_Previews: PreviewProvider {
     static var previews: some View {
-        RegisterField(placeholder: "Mot de passe", textContent: .constant("mot de passe"), paddingDirection: .vertical, paddingValue: 10)
+        RegisterField(
+            placeholder: "Mot de passe",
+            textContent: .constant("mot de passe"),
+            paddingDirection: .vertical,
+            paddingValue: 10,
+            isSecure: false
+        )
     }
 }

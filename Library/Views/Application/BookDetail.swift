@@ -11,7 +11,7 @@ struct BookDetail: View {
     var book: BookModel
     var body: some View {
         ZStack {
-            lightgray.edgesIgnoringSafeArea(.all)
+            Color.lightgraySet.edgesIgnoringSafeArea(.all)
             List {
                 Section(header: Text("Détails")
                             .bold()
@@ -46,7 +46,7 @@ struct BookDetail: View {
                 }
             }
             .listStyle(.plain)
-            .background(lightgray)
+            .background(Color("lightgray"))
         }
     }
 }

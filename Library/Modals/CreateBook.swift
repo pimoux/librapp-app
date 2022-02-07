@@ -44,7 +44,7 @@ struct CreateBook: View {
     var body: some View {
         NavigationView {
             ZStack {
-                lightgray.edgesIgnoringSafeArea(.all)
+                Color.lightgraySet.edgesIgnoringSafeArea(.all)
                 VStack(alignment: .leading) {
                     Text("Ajouter un livre")
                         .bold()

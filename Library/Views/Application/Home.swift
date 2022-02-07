@@ -36,7 +36,7 @@ struct Home: View {
         }
         .environmentObject(bookVM)
         .environmentObject(authorVM)
-        .accentColor(darkBlue)
+        .accentColor(.darkBlueSet)
     }
 }
 

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 extension Date {
     static func ISOStringFromDate(date: Date) -> String {
@@ -25,4 +26,12 @@ extension Date {
         
         return dateFormatter.date(from: string)
     }
+}
+
+extension Color {
+    static let lightgraySet = Color("lightgray")
+    static let lightgrayFieldSet = Color("lightgrayField")
+    static let lightgrayNavSet = Color("lightgrayNav")
+    static let lightgrayEditItemSet = Color("lightgrayEditItem")
+    static let darkBlueSet = Color("darkBlue")
 }
