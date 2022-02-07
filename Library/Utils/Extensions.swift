@@ -34,4 +34,16 @@ extension Color {
     static let lightgrayNavSet = Color("lightgrayNav")
     static let lightgrayEditItemSet = Color("lightgrayEditItem")
     static let darkBlueSet = Color("darkBlue")
+    static let turquoiseSet = Color("turquoise")
+    static let darkSet = Color("dark")
+}
+
+extension View {
+    func getRect() -> CGRect {
+        return UIScreen.main.bounds
+    }
+    
+    func getSafeArea() -> UIEdgeInsets {
+        return UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+    }
 }
