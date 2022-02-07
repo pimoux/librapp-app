@@ -12,6 +12,7 @@
 		5656FB5027A97FD600620259 /* RegisterField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656FB4F27A97FD600620259 /* RegisterField.swift */; };
 		5656FB5227A9828D00620259 /* SubmitButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656FB5127A9828D00620259 /* SubmitButton.swift */; };
 		5656FB5427A9872F00620259 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656FB5327A9872F00620259 /* Login.swift */; };
+		5671A0E127B16AD20012C1BD /* DataRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5671A0E027B16AD20012C1BD /* DataRow.swift */; };
 		56732E662783892800CB50B5 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56732E652783892800CB50B5 /* Panel.swift */; };
 		56732E682783895200CB50B5 /* Authors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56732E672783895200CB50B5 /* Authors.swift */; };
 		56732E6A2783895F00CB50B5 /* Books.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56732E692783895F00CB50B5 /* Books.swift */; };
@@ -39,6 +40,7 @@
 		5656FB4F27A97FD600620259 /* RegisterField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterField.swift; sourceTree = "<group>"; };
 		5656FB5127A9828D00620259 /* SubmitButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubmitButton.swift; sourceTree = "<group>"; };
 		5656FB5327A9872F00620259 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		5671A0E027B16AD20012C1BD /* DataRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRow.swift; sourceTree = "<group>"; };
 		56732E652783892800CB50B5 /* Panel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
 		56732E672783895200CB50B5 /* Authors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Authors.swift; sourceTree = "<group>"; };
 		56732E692783895F00CB50B5 /* Books.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Books.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				562350542798777E002D6A90 /* InputField.swift */,
 				5656FB4F27A97FD600620259 /* RegisterField.swift */,
 				5656FB5127A9828D00620259 /* SubmitButton.swift */,
+				5671A0E027B16AD20012C1BD /* DataRow.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -274,6 +277,7 @@
 				567A79A427B02C4200062F8D /* Home.swift in Sources */,
 				567A799827B0241900062F8D /* BookModels.swift in Sources */,
 				56732E662783892800CB50B5 /* Panel.swift in Sources */,
+				5671A0E127B16AD20012C1BD /* DataRow.swift in Sources */,
 				56E9AB782799B28400CD1F92 /* Extensions.swift in Sources */,
 				56732E6A2783895F00CB50B5 /* Books.swift in Sources */,
 				5656FB5427A9872F00620259 /* Login.swift in Sources */,

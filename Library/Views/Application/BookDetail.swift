@@ -18,35 +18,15 @@ struct BookDetail: View {
                             .font(.largeTitle)
                             .foregroundColor(.black)
                             ) {
-                    HStack {
-                        Text("ID")
-                        Spacer()
-                        Text("\(book.id!)")
-                    }
-                    HStack {
-                        Text("Titre")
-                        Spacer()
-                        Text("\(book.title)")
-                    }
-                    HStack {
-                        Text("Nombre de pages")
-                        Spacer()
-                        Text("\(book.nbPages!)")
-                    }
-                    HStack {
-                        Text("Prix")
-                        Spacer()
-                        Text("\(String(format: "%.2f", book.prix!))€")
-                    }
-                    HStack {
-                        Text("Auteur")
-                        Spacer()
-                        Text("\(book.author!.firstname) \(book.author!.lastname)")
-                    }
+                    DataRow(label: "ID", data: String(book.id!))
+                    DataRow(label: "Titre", data: book.title)
+                    DataRow(label: "Nombre de pages", data: String(book.nbPages!))
+                    DataRow(label: "Prix", data: "\(String(format: "%.2f", book.prix!))€")
+                    DataRow(label: "Auteur", data: "\(book.author!.firstname) \(book.author!.lastname)")
                 }
             }
             .listStyle(.plain)
-            .background(Color("lightgray"))
+            .background(Color.lightgraySet)
         }
     }
 }

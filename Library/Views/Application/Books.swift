@@ -22,7 +22,7 @@ struct Books: View {
                             TextField("Search", text: $searchFilter)
                         }
                         .padding(10)
-                        .background(Color("lightgrayField"))
+                        .background(Color.lightgrayFieldSet)
                         .cornerRadius(8)
                     }
                     .padding(.horizontal, 20)
@@ -42,7 +42,7 @@ struct Books: View {
                     .sheet(isPresented: $isPresented) {
                         CreateBook()
                     }
-                    .background(Color("lightgray"))
+                    .background(Color.lightgraySet)
                     .listStyle(.plain)
                 }
                 .navigationBarTitle("Livres", displayMode: .inline)

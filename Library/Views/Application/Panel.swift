@@ -26,7 +26,7 @@ struct Panel: View {
                 .navigationBarTitle("Admin", displayMode: .inline)
                 .listStyle(.plain)
             }
-            .background(Color("lightgray"))
+            .background(Color.lightgraySet)
         }
     }
 }

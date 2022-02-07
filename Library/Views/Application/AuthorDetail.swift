@@ -66,31 +66,11 @@ struct AuthorDetail: View {
                             .font(.largeTitle)
                             .foregroundColor(.black)
                             ) {
-                    HStack {
-                        Text("ID")
-                        Spacer()
-                        Text("\(author.id!)")
-                    }
-                    HStack {
-                        Text("Prénom")
-                        Spacer()
-                        Text(author.firstname)
-                    }
-                    HStack {
-                        Text("Nom")
-                        Spacer()
-                        Text(author.lastname)
-                    }
-                    HStack {
-                        Text("Date de naissance")
-                        Spacer()
-                        Text(formatDate(date: author.datns!))
-                    }
-                    HStack {
-                        Text("Lieu d'habitation")
-                        Spacer()
-                        Text(author.location!)
-                    }
+                    DataRow(label: "ID", data: String(author.id!))
+                    DataRow(label: "Prénom", data: author.firstname)
+                    DataRow(label: "Nom", data: author.lastname)
+                    DataRow(label: "Date de naissance", data: formatDate(date: author.datns!))
+                    DataRow(label: "Lieu d'habitation", data: author.location!)
                 }
                 
                 Section(header: bookListHeader) {
@@ -102,7 +82,7 @@ struct AuthorDetail: View {
                 }
             }
             .listStyle(.plain)
-            .background(Color("lightgray"))
+            .background(Color.lightgraySet)
             .onAppear {
                 getAuthorBooks()
             }

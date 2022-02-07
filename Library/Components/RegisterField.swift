@@ -17,14 +17,14 @@ struct RegisterField: View {
         if isSecure {
             SecureField(placeholder, text: textContent)
                 .padding()
-                .background(Color("lightgrayField"))
+                .background(Color.lightgrayFieldSet)
                 .cornerRadius(10)
                 .padding(paddingDirection, CGFloat(paddingValue))
                 .foregroundColor(.lightgrayEditItemSet)
         } else {
             TextField(placeholder, text: textContent)
                 .padding()
-                .background(Color("lightgrayField"))
+                .background(Color.lightgrayFieldSet)
                 .cornerRadius(10)
                 .padding(paddingDirection, CGFloat(paddingValue))
                 .foregroundColor(.lightgrayEditItemSet)

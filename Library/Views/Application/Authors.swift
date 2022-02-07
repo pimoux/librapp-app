@@ -42,7 +42,7 @@ struct Authors: View {
                     .sheet(isPresented: $isPresentedCreateAuthor) {
                         CreateAuthor()
                     }
-                    .background(Color("lightgray"))
+                    .background(Color.lightgraySet)
                     .listStyle(.plain)
                 }
                 .navigationBarTitle("Auteurs", displayMode: .inline)
