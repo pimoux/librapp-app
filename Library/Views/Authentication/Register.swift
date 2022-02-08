@@ -8,10 +8,70 @@
 import SwiftUI
 
 struct Register: View {
-    @State private var registerData = RegisterModel()
-    
+    @State private var registration: RegisterModel = RegisterModel()
     var body: some View {
-        Text("salut")
+        VStack {
+            Text("S'inscrire")
+                .font(.title)
+                .fontWeight(.bold)
+                .foregroundColor(.darkSet)
+                .kerning(1.9)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            HStack {
+                EntryField(
+                    placeholder: "John",
+                    label: "Nom",
+                    textContent: $registration.firstname,
+                    paddingValue: 25,
+                    isSecure: false
+                )
+                EntryField(
+                    placeholder: "Doe",
+                    label: "Prénom",
+                    textContent: $registration.lastname,
+                    paddingValue: 20,
+                    isSecure: false
+                )
+            }
+            EntryField(
+                placeholder: "john@doe.fr",
+                label: "Adresse mail",
+                textContent: $registration.email,
+                paddingValue: 20,
+                isSecure: false
+            )
+            HStack {
+                EntryField(
+                    placeholder: "blablabla",
+                    label: "Mot de passe",
+                    textContent: $registration.password,
+                    paddingValue: 20,
+                    isSecure: true
+                )
+                EntryField(
+                    placeholder: "blablabla",
+                    label: "Répéter mot de passe",
+                    textContent: $registration.repeatPassword,
+                    paddingValue: 20,
+                    isSecure: true
+                )
+            }
+            
+            Button {
+                print("salut")
+            } label: {
+                Image(systemName: "arrow.right")
+                    .font(.system(size: 24, weight: .bold))
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color.darkSet)
+                    .clipShape(Circle())
+                    .shadow(color: .turquoiseSet.opacity(0.6), radius: 5, x: 0, y: 0)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(.top, 10)
+        }
+        .padding()
     }
 }
 
