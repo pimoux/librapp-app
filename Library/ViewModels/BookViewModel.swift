@@ -20,7 +20,14 @@ class BookViewModel: ObservableObject {
             return
         }
         
-        URLSession.shared.dataTask(with: url) { (data, response, error) in
+        guard let token = UserDefaults.standard.string(forKey: "jwt") else {
+            return
+        }
+        
+        var request = URLRequest(url: url)
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
             guard let data = data, error == nil else {
                 return
             }
@@ -54,6 +61,10 @@ class BookViewModel: ObservableObject {
             return
         }
         
+        guard let token = UserDefaults.standard.string(forKey: "jwt") else {
+            return
+        }
+        
         var request = URLRequest(url: url)
         let serializedBody = try? JSONSerialization.data(withJSONObject: body, options: [])
         
@@ -61,6 +72,7 @@ class BookViewModel: ObservableObject {
         request.httpBody = serializedBody
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.setValue("application/json", forHTTPHeaderField: "accept")
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         
         URLSession.shared.dataTask(with: request) { (_, response, _) in
             if let response = response as? HTTPURLResponse {

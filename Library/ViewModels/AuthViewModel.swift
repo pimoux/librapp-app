@@ -25,4 +25,8 @@ class AuthViewModel: ObservableObject {
             }
         }
     }
+    
+    func setIsAuthenticated(isAuthenticated: Bool) {
+        self.isAuthenticated = isAuthenticated
+    }
 }

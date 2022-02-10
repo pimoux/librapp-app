@@ -46,7 +46,7 @@ struct Login: View {
             
             Button {
                 loginVM.login() { success in
-                    loginVM.isAuthenticated = success
+                    loginVM.setIsAuthenticated(isAuthenticated: success)
                 }
             } label: {
                 Image(systemName: "arrow.right")
