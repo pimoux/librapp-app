@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct Login: View {
-    @State private var credentials: LoginModel = LoginModel()
+    @EnvironmentObject private var loginVM: AuthViewModel
     var body: some View {
         VStack {
             Text("Se connecter")
@@ -21,7 +21,7 @@ struct Login: View {
             EntryField(
                 placeholder: "john@doe.com",
                 label: "Adresse mail",
-                textContent: $credentials.email,
+                textContent: $loginVM.credentials.email,
                 paddingValue: 25,
                 isSecure: false
             )
@@ -29,7 +29,7 @@ struct Login: View {
             EntryField(
                 placeholder: "blablabla",
                 label: "Mot de passe",
-                textContent: $credentials.password,
+                textContent: $loginVM.credentials.password,
                 paddingValue: 20,
                 isSecure: true
             )
@@ -45,7 +45,9 @@ struct Login: View {
             .padding(.top, 10)
             
             Button {
-                print("salut")
+                loginVM.login() { success in
+                    loginVM.isAuthenticated = success
+                }
             } label: {
                 Image(systemName: "arrow.right")
                     .font(.system(size: 24, weight: .bold))
@@ -64,6 +66,6 @@ struct Login: View {
 
 struct Login_Previews: PreviewProvider {
     static var previews: some View {
-        Login()
+        Login().environmentObject(AuthViewModel())
     }
 }

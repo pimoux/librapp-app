@@ -29,6 +29,8 @@
 		56873F0F2782391500AD73E7 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 56873F0E2782391500AD73E7 /* Preview Assets.xcassets */; };
 		56954599278F1D750057FA8F /* BookDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56954598278F1D750057FA8F /* BookDetail.swift */; };
 		5695459B278F1D820057FA8F /* AuthorDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5695459A278F1D820057FA8F /* AuthorDetail.swift */; };
+		569C912127B54DBA00FA297D /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C912027B54DBA00FA297D /* AuthService.swift */; };
+		569C912327B5573100FA297D /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C912227B5573100FA297D /* AuthViewModel.swift */; };
 		56A150C92791C72A00A02775 /* CreateBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A150C82791C72A00A02775 /* CreateBook.swift */; };
 		56A150CB2791CEA200A02775 /* CreateAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A150CA2791CEA200A02775 /* CreateAuthor.swift */; };
 		56E9AB782799B28400CD1F92 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E9AB772799B28400CD1F92 /* Extensions.swift */; };
@@ -59,6 +61,8 @@
 		56873F0E2782391500AD73E7 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		56954598278F1D750057FA8F /* BookDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookDetail.swift; sourceTree = "<group>"; };
 		5695459A278F1D820057FA8F /* AuthorDetail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorDetail.swift; sourceTree = "<group>"; };
+		569C912027B54DBA00FA297D /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		569C912227B5573100FA297D /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		56A150C82791C72A00A02775 /* CreateBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBook.swift; sourceTree = "<group>"; };
 		56A150CA2791CEA200A02775 /* CreateAuthor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAuthor.swift; sourceTree = "<group>"; };
 		56E9AB772799B28400CD1F92 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -110,6 +114,7 @@
 			children = (
 				567A799C27B027A200062F8D /* BookViewModel.swift */,
 				567A799E27B027D900062F8D /* AuthorViewModel.swift */,
+				569C912227B5573100FA297D /* AuthViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -165,6 +170,7 @@
 		56873F062782391000AD73E7 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				569C911F27B54D9A00FA297D /* Services */,
 				56508185279718C8007F599D /* Info.plist */,
 				567A799B27B0251B00062F8D /* ViewModels */,
 				567A799427B023E700062F8D /* Models */,
@@ -185,6 +191,14 @@
 				56873F0E2782391500AD73E7 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		569C911F27B54D9A00FA297D /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				569C912027B54DBA00FA297D /* AuthService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		56A150C72791C71200A02775 /* Modals */ = {
@@ -281,10 +295,12 @@
 				567A79A427B02C4200062F8D /* Home.swift in Sources */,
 				567A799827B0241900062F8D /* BookModels.swift in Sources */,
 				56732E662783892800CB50B5 /* Panel.swift in Sources */,
+				569C912127B54DBA00FA297D /* AuthService.swift in Sources */,
 				5671A0E127B16AD20012C1BD /* DataRow.swift in Sources */,
 				56E9AB782799B28400CD1F92 /* Extensions.swift in Sources */,
 				56732E6A2783895F00CB50B5 /* Books.swift in Sources */,
 				5656FB5427A9872F00620259 /* Login.swift in Sources */,
+				569C912327B5573100FA297D /* AuthViewModel.swift in Sources */,
 				56A150C92791C72A00A02775 /* CreateBook.swift in Sources */,
 				5656FB4E27A97D2400620259 /* Register.swift in Sources */,
 				5671A0E327B17CE20012C1BD /* CircleItem.swift in Sources */,

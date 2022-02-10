@@ -9,9 +9,14 @@ import SwiftUI
 
 @main
 struct LibraryApp: App {
+    @StateObject private var authVM: AuthViewModel = AuthViewModel()
     var body: some Scene {
         WindowGroup {
-            Welcome()
+            if authVM.isAuthenticated {
+                Home().environmentObject(authVM)
+            } else {
+                Welcome().environmentObject(authVM)
+            }
         }
     }
 }

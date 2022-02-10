@@ -36,7 +36,7 @@ struct Welcome: View {
             
             ZStack {
                 if showRegister {
-                    Register().transition(.move(edge: .trailing))
+                    Register(isRegistered: $showRegister).transition(.move(edge: .trailing))
                 } else {
                     Login().transition(.move(edge: .leading))
                 }

@@ -9,6 +9,7 @@ import SwiftUI
 
 struct Register: View {
     @State private var registration: RegisterModel = RegisterModel()
+    @Binding var isRegistered: Bool
     var body: some View {
         VStack {
             Text("S'inscrire")
@@ -58,7 +59,9 @@ struct Register: View {
             }
             
             Button {
-                print("salut")
+                withAnimation {
+                    isRegistered.toggle()
+                }
             } label: {
                 Image(systemName: "arrow.right")
                     .font(.system(size: 24, weight: .bold))
@@ -77,6 +80,6 @@ struct Register: View {
 
 struct Register_Previews: PreviewProvider {
     static var previews: some View {
-        Register()
+        Register(isRegistered: .constant(true))
     }
 }
