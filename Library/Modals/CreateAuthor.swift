@@ -20,19 +20,6 @@ struct CreateAuthor: View {
         UITableView.appearance().backgroundColor = .clear
     }
     
-    public func submitAuthorData() {
-        if firstname != "" && lastname != "" && location != "" && datns <= Date.now {
-            let body: [String: Any] = [
-                "firstname": firstname,
-                "lastname": lastname,
-                "datns": Date.ISOStringFromDate(date: datns),
-                "location": location
-            ]
-            authorVM.createAuthor(body: body)
-            presentationMode.wrappedValue.dismiss()
-        }
-    }
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -55,7 +42,18 @@ struct CreateAuthor: View {
                         }
                         InputField(header: "Lieu d'habitation", textContent: $location)
                         Button {
-                            submitAuthorData()
+                            if firstname != "" && lastname != "" && location != "" && datns <= Date.now {
+                                let body: [String: Any] = [
+                                    "firstname": firstname,
+                                    "lastname": lastname,
+                                    "datns": Date.ISOStringFromDate(date: datns),
+                                    "location": location
+                                ]
+                                authorVM.createAuthor(body: body)
+                                presentationMode.wrappedValue.dismiss()
+                            } else {
+                                isAlert = true
+                            }
                         } label: {
                             Text("Ajouter")
                                 .bold()
