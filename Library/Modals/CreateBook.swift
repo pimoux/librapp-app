@@ -22,25 +22,6 @@ struct CreateBook: View {
         UITableView.appearance().backgroundColor = .clear
     }
     
-    public func submitBookData() {
-        if let prix = Double(prix), let nbPages = Int(nbPages) {
-            if prix > 0 && nbPages > 0 && title != "" && selectedAuthor != "" {
-                let body: [String: Any] = [
-                    "title": title,
-                    "nbPages": nbPages,
-                    "prix": prix,
-                    "author": selectedAuthor
-                ]
-                bookVM.createBook(body: body)
-                presentationMode.wrappedValue.dismiss()
-            } else {
-                isAlert.toggle()
-            }
-        } else {
-            isAlert.toggle()
-        }
-    }
-    
     var body: some View {
         NavigationView {
             ZStack {
@@ -94,7 +75,33 @@ struct CreateBook: View {
                                 .navigationBarTitle("Auteurs disponible")
                             }
                         }
-                        SubmitButton(callback: submitBookData(), label: "Ajouter")
+                        Button {
+                            if let prix = Double(prix), let nbPages = Int(nbPages) {
+                                if prix > 0 && nbPages > 0 && title != "" && selectedAuthor != "" {
+                                    let body: [String: Any] = [
+                                        "title": title,
+                                        "nbPages": nbPages,
+                                        "prix": prix,
+                                        "author": selectedAuthor
+                                    ]
+                                    bookVM.createBook(body: body)
+                                    presentationMode.wrappedValue.dismiss()
+                                } else {
+                                    isAlert = true
+                                }
+                            } else {
+                                isAlert = true
+                            }
+                        } label: {
+                            Text("Ajouter")
+                                .bold()
+                                .font(.title3)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical)
+                                .background(Color("darkBlue"))
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }
                     }
                 }
                 .alert(isPresented: $isAlert) {

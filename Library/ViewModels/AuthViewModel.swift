@@ -27,6 +27,8 @@ class AuthViewModel: ObservableObject {
     }
     
     func setIsAuthenticated(isAuthenticated: Bool) {
-        self.isAuthenticated = isAuthenticated
+        DispatchQueue.main.async {
+            self.isAuthenticated = isAuthenticated
+        }
     }
 }

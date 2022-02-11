@@ -30,8 +30,6 @@ struct CreateAuthor: View {
             ]
             authorVM.createAuthor(body: body)
             presentationMode.wrappedValue.dismiss()
-        } else {
-            isAlert.toggle()
         }
     }
     
@@ -56,13 +54,19 @@ struct CreateAuthor: View {
                                 .datePickerStyle(.wheel)
                         }
                         InputField(header: "Lieu d'habitation", textContent: $location)
-                        SubmitButton(callback: submitAuthorData(), label: "Ajouter")
+                        Button {
+                            submitAuthorData()
+                        } label: {
+                            Text("Ajouter")
+                                .bold()
+                                .font(.title3)
+                                .frame(maxWidth: .infinity)
+                                .padding(.vertical)
+                                .background(Color("darkBlue"))
+                                .foregroundColor(.white)
+                                .cornerRadius(10)
+                        }
                     }
-                }
-                .alert(isPresented: $isAlert) {
-                    let titleError = Text("Données incorrecte")
-                    let messageError = Text("Les champs n'ont pas été remplis ou ne sont pas remplis correctement")
-                    return Alert(title: titleError, message: messageError)
                 }
             }
             .navigationBarTitle("Nouvel auteur", displayMode: .inline)
