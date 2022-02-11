@@ -9,10 +9,7 @@ import SwiftUI
 import Combine
 
 struct CreateBook: View {
-    @State private var title: String = ""
-    @State private var nbPages: String = ""
-    @State private var prix: String = ""
-    @State private var selectedAuthor: String = ""
+    @State private var bookData: CreateBookModel = CreateBookModel()
     @State private var isAlert: Bool = false
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var authorVM: AuthorViewModel
@@ -32,20 +29,20 @@ struct CreateBook: View {
                         .font(.largeTitle)
                         .padding()
                     Form {
-                        InputField(header: "Titre", textContent: $title)
+                        InputField(header: "Titre", textContent: $bookData.title)
                         Section(header: Text("Nombre de pages")
                                     .bold()
                                     .font(.title)
                                     .textCase(.none)
                                     .foregroundColor(.black)) {
-                            TextField("Nombre de pages", text: $nbPages)
+                            TextField("Nombre de pages", text: $bookData.nbPages)
                                 .background(.white)
                                 .cornerRadius(10)
                                 .keyboardType(.numberPad)
-                                .onReceive(Just(nbPages)) { newPageNum in
+                                .onReceive(Just(bookData.nbPages)) { newPageNum in
                                     let filtered = newPageNum.filter { "0123456789".contains($0) }
                                     if filtered != newPageNum {
-                                        self.nbPages = filtered
+                                        self.bookData.nbPages = filtered
                                     }
                                 }
                         }
@@ -54,19 +51,19 @@ struct CreateBook: View {
                                     .font(.title)
                                     .textCase(.none)
                                     .foregroundColor(.black)) {
-                            TextField("Prix", text: $prix)
+                            TextField("Prix", text: $bookData.prix)
                                 .background(.white)
                                 .cornerRadius(10)
                                 .keyboardType(.decimalPad)
-                                .onReceive(Just(prix)) { price in
+                                .onReceive(Just(bookData.prix)) { price in
                                     let filtered = price.filter { "0123456789.".contains($0) }
                                     if filtered != price {
-                                        self.nbPages = filtered
+                                        self.bookData.nbPages = filtered
                                     }
                                 }
                         }
                         Section(header: Text("")) {
-                            Picker("Auteur", selection: $selectedAuthor) {
+                            Picker("Auteur", selection: $bookData.selectedAuthor) {
                                 ForEach(authorVM.authors.sorted{ (cur, new) in
                                     return cur.firstname < new.firstname
                                 }, id: \.id) { author in
@@ -76,19 +73,18 @@ struct CreateBook: View {
                             }
                         }
                         Button {
-                            if let prix = Double(prix), let nbPages = Int(nbPages) {
-                                if prix > 0 && nbPages > 0 && title != "" && selectedAuthor != "" {
-                                    let body: [String: Any] = [
-                                        "title": title,
-                                        "nbPages": nbPages,
-                                        "prix": prix,
-                                        "author": selectedAuthor
-                                    ]
-                                    bookVM.createBook(body: body)
-                                    presentationMode.wrappedValue.dismiss()
-                                } else {
-                                    isAlert = true
-                                }
+                            if let prix = Double(bookData.prix), prix > 0,
+                               let nbPages = Int(bookData.nbPages), nbPages > 0,
+                               bookData.title != "" && bookData.selectedAuthor != "" {
+                                let body: [String: Any] = [
+                                    "title": bookData.title,
+                                    "nbPages": nbPages,
+                                    "prix": prix,
+                                    "author": bookData.selectedAuthor
+                                ]
+                                print(body)
+                                bookVM.createBook(body: body)
+                                presentationMode.wrappedValue.dismiss()
                             } else {
                                 isAlert = true
                             }

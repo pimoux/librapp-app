@@ -45,3 +45,10 @@ struct AuthorsResponse: Decodable {
     var authors: [AuthorModel]
     var authorsNumber: Int
 }
+
+struct CreateAuthorModel {
+    var firstname: String = ""
+    var lastname: String = ""
+    var datns: Date = Date()
+    var location: String = ""
+}

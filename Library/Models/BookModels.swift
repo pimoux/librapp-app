@@ -23,3 +23,10 @@ struct BooksResponse: Decodable {
     var books: [BookModel]
     var booksNumber: Int
 }
+
+struct CreateBookModel {
+    var title: String = ""
+    var nbPages: String = ""
+    var prix: String = ""
+    var selectedAuthor: String = ""
+}

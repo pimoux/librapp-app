@@ -8,10 +8,7 @@
 import SwiftUI
 
 struct CreateAuthor: View {
-    @State private var firstname: String = ""
-    @State private var lastname: String = ""
-    @State private var datns: Date = Date()
-    @State private var location: String = ""
+    @State private var authorData: CreateAuthorModel = CreateAuthorModel()
     @State private var isAlert: Bool = false
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var authorVM: AuthorViewModel
@@ -30,24 +27,24 @@ struct CreateAuthor: View {
                         .font(.largeTitle)
                         .padding()
                     Form {
-                        InputField(header: "Prénom", textContent: $firstname)
-                        InputField(header: "Nom", textContent: $lastname)
+                        InputField(header: "Prénom", textContent: $authorData.firstname)
+                        InputField(header: "Nom", textContent: $authorData.lastname)
                         Section(header: Text("Date de naissance")
                                     .bold()
                                     .font(.title)
                                     .textCase(.none)
                                     .foregroundColor(.black)) {
-                            DatePicker("", selection: $datns, displayedComponents: .date)
+                            DatePicker("", selection: $authorData.datns, displayedComponents: .date)
                                 .datePickerStyle(.wheel)
                         }
-                        InputField(header: "Lieu d'habitation", textContent: $location)
+                        InputField(header: "Lieu d'habitation", textContent: $authorData.location)
                         Button {
-                            if firstname != "" && lastname != "" && location != "" && datns <= Date.now {
+                            if authorData.firstname != "" && authorData.lastname != "" && authorData.location != "" && authorData.datns <= Date.now {
                                 let body: [String: Any] = [
-                                    "firstname": firstname,
-                                    "lastname": lastname,
-                                    "datns": Date.ISOStringFromDate(date: datns),
-                                    "location": location
+                                    "firstname": authorData.firstname,
+                                    "lastname": authorData.lastname,
+                                    "datns": Date.ISOStringFromDate(date: authorData.datns),
+                                    "location": authorData.location
                                 ]
                                 authorVM.createAuthor(body: body)
                                 presentationMode.wrappedValue.dismiss()
