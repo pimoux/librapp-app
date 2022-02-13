@@ -8,50 +8,44 @@
 import SwiftUI
 
 struct Test: View {
-    @State private var triggerAnimation: Bool = false
-    @State private var isAnimated: Bool = false
-    @State private var isAnimated2: Bool = false
-    @State private var isAnimated3: Bool = false
+    @State private var shouldAnimate = false
+    @State private var displayLoading = false
+    
     var body: some View {
         VStack {
             Button {
-                triggerAnimation.toggle()
-                withAnimation(.easeInOut(duration: 0.5).repeatForever(autoreverses: true)) {
-                    isAnimated.toggle()
+                self.displayLoading.toggle()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                    self.shouldAnimate.toggle()
                 }
-                withAnimation(.easeInOut(duration: 0.5).repeatForever(autoreverses: true).delay(0.3)) {
-                    isAnimated2.toggle()
-                }
-                withAnimation(.easeInOut(duration: 0.5).repeatForever(autoreverses: true).delay(0.6)) {
-                    isAnimated3.toggle()
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                    self.displayLoading.toggle()
+                    self.shouldAnimate.toggle()
                 }
             } label: {
-                Text("Button")
-                    .foregroundColor(.white)
-                    .padding()
-                    .frame(maxWidth: .infinity)
-                    .background(Color.darkBlueSet)
-                    .padding()
-            }
-            if triggerAnimation {
-                HStack {
-                    Circle()
-                        .fill(Color.blue)
-                        .frame(width: 20, height: 20)
-                        .scaleEffect(isAnimated ? 4.0 : 2.0)
-                        .animation(Animation.easeInOut(duration: 0.5).repeatForever(autoreverses: true), value: 0)
-                    Spacer()
-                    Circle()
-                        .fill(Color.blue)
-                        .frame(width: 20, height: 20)
-                        .scaleEffect(isAnimated2 ? 4.0 : 2.0)
-                    Spacer()
-                    Circle()
-                        .fill(Color.blue)
-                        .frame(width: 20, height: 20)
-                        .scaleEffect(isAnimated3 ? 4.0 : 2.0)
+                if displayLoading {
+                    HStack {
+                        Circle()
+                            .fill(Color.blue)
+                            .frame(width: 20, height: 20)
+                            .scaleEffect(shouldAnimate ? 1.0 : 0.5)
+                            .animation(Animation.easeInOut(duration: 0.5).repeatForever(), value: shouldAnimate)
+                        Circle()
+                            .fill(Color.blue)
+                            .frame(width: 20, height: 20)
+                            .scaleEffect(shouldAnimate ? 1.0 : 0.5)
+                            .animation(Animation.easeInOut(duration: 0.5).repeatForever().delay(0.3), value: shouldAnimate)
+                        Circle()
+                            .fill(Color.blue)
+                            .frame(width: 20, height: 20)
+                            .scaleEffect(shouldAnimate ? 1.0 : 0.5)
+                            .animation(Animation.easeInOut(duration: 0.5).repeatForever().delay(0.6), value: shouldAnimate)
+                    }
+                } else {
+                    Text("Animate")
                 }
             }
+            .disabled(shouldAnimate)
         }
     }
 }
