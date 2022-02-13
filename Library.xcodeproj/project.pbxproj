@@ -10,6 +10,7 @@
 		562350552798777E002D6A90 /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562350542798777E002D6A90 /* InputField.swift */; };
 		5656FB4E27A97D2400620259 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656FB4D27A97D2400620259 /* Register.swift */; };
 		5656FB5427A9872F00620259 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656FB5327A9872F00620259 /* Login.swift */; };
+		5664636A27B94B7B0065A96A /* LoadingCircles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5664636927B94B7A0065A96A /* LoadingCircles.swift */; };
 		566D361E27B6C97B007ED5AF /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D361D27B6C97B007ED5AF /* Test.swift */; };
 		5671A0E127B16AD20012C1BD /* DataRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5671A0E027B16AD20012C1BD /* DataRow.swift */; };
 		5671A0E327B17CE20012C1BD /* CircleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5671A0E227B17CE20012C1BD /* CircleItem.swift */; };
@@ -41,6 +42,7 @@
 		56508185279718C8007F599D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5656FB4D27A97D2400620259 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		5656FB5327A9872F00620259 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		5664636927B94B7A0065A96A /* LoadingCircles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCircles.swift; sourceTree = "<group>"; };
 		566D361D27B6C97B007ED5AF /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		5671A0E027B16AD20012C1BD /* DataRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRow.swift; sourceTree = "<group>"; };
 		5671A0E227B17CE20012C1BD /* CircleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleItem.swift; sourceTree = "<group>"; };
@@ -94,6 +96,7 @@
 				5671A0E027B16AD20012C1BD /* DataRow.swift */,
 				5671A0E227B17CE20012C1BD /* CircleItem.swift */,
 				5671A0E427B17FFD0012C1BD /* EntryField.swift */,
+				5664636927B94B7A0065A96A /* LoadingCircles.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				56732E682783895200CB50B5 /* Authors.swift in Sources */,
 				56A150CB2791CEA200A02775 /* CreateAuthor.swift in Sources */,
 				562350552798777E002D6A90 /* InputField.swift in Sources */,
+				5664636A27B94B7B0065A96A /* LoadingCircles.swift in Sources */,
 				567A799627B0240B00062F8D /* AuthModels.swift in Sources */,
 				5671A0E527B17FFD0012C1BD /* EntryField.swift in Sources */,
 				567A79A127B02BD800062F8D /* Welcome.swift in Sources */,
