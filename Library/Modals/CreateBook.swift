@@ -11,6 +11,8 @@ import Combine
 struct CreateBook: View {
     @State private var bookData: CreateBookModel = CreateBookModel()
     @State private var isAlert: Bool = false
+    @State private var shouldAnimate = false
+    @State private var displayLoading = false
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var authorVM: AuthorViewModel
     @EnvironmentObject var bookVM: BookViewModel
@@ -76,28 +78,41 @@ struct CreateBook: View {
                             if let prix = Double(bookData.prix), prix > 0,
                                let nbPages = Int(bookData.nbPages), nbPages > 0,
                                bookData.title != "" && bookData.selectedAuthor != "" {
+                                self.displayLoading.toggle()
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                                    self.shouldAnimate.toggle()
+                                }
                                 let body: [String: Any] = [
                                     "title": bookData.title,
                                     "nbPages": nbPages,
                                     "prix": prix,
                                     "author": bookData.selectedAuthor
                                 ]
-                                print(body)
                                 bookVM.createBook(body: body)
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 100) {
+                                    self.displayLoading.toggle()
+                                    self.shouldAnimate.toggle()
+                                }
                                 presentationMode.wrappedValue.dismiss()
                             } else {
                                 isAlert = true
                             }
                         } label: {
-                            Text("Ajouter")
-                                .bold()
-                                .font(.title3)
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical)
-                                .background(Color("darkBlue"))
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
+                            if displayLoading {
+                                LoadingCircles(shouldAnimate: shouldAnimate)
+                                    .padding(.vertical)
+                            } else {
+                                Text("Ajouter")
+                                    .bold()
+                                    .font(.title3)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical)
+                                    .background(Color("darkBlue"))
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                            }
                         }
+                        .disabled(shouldAnimate)
                     }
                 }
                 .alert(isPresented: $isAlert) {

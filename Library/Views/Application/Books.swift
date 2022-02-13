@@ -29,7 +29,7 @@ struct Books: View {
                     .padding(.top, 20)
                     
                     List {
-                        Section(header: Text("\(bookVM.books.filter({$0.title.lowercased().contains(searchFilter.lowercased()) || searchFilter.isEmpty}).count) LIVRES DISPONIBLES")) {
+                        Section(header: Text(searchFilter.isEmpty ? "\(bookVM.booksNumber) LIVRES DISPONIBLES" : "\(bookVM.books.filter({$0.title.lowercased().contains(searchFilter.lowercased()) || searchFilter.isEmpty}).count) LIVRES DISPONIBLES")) {
                             ForEach(bookVM.books.filter({$0.title.lowercased().contains(searchFilter.lowercased()) || searchFilter.isEmpty}), id: \.id) { book in
                                 NavigationLink(destination: BookDetail(book: book)) {
                                     HStack {

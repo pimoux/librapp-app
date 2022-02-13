@@ -29,8 +29,8 @@ struct Authors: View {
                     .padding(.top, 20)
                     
                     List {
-                        Section(header: Text("\(authorVM.authors.filter({$0.firstname.contains(searchFilter) || $0.lastname.contains(searchFilter) || searchFilter.isEmpty}).count) AUTEURS DISPONIBLES")) {
-                            ForEach(authorVM.authors.filter({$0.firstname.contains(searchFilter) || $0.lastname.contains(searchFilter) || searchFilter.isEmpty}), id: \.id) { author in
+                        Section(header: Text(searchFilter.isEmpty ? "\(authorVM.authorsNumber) AUTEURS DISPONIBLES" : "\(authorVM.authors.filter({$0.firstname.lowercased().contains(searchFilter.lowercased()) || $0.lastname.lowercased().contains(searchFilter.lowercased()) || searchFilter.isEmpty}).count) AUTEURS DISPONIBLES")) {
+                            ForEach(authorVM.authors.filter({$0.firstname.lowercased().contains(searchFilter.lowercased()) || $0.lastname.lowercased().contains(searchFilter.lowercased()) || searchFilter.isEmpty}), id: \.id) { author in
                                 NavigationLink(destination: AuthorDetail(author: author)) {
                                     HStack {
                                         Text("\(author.firstname) \(author.lastname)")

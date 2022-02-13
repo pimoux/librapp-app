@@ -47,6 +47,7 @@ struct LoadingCircles: View {
                            value: shouldAnimate
                 )
         }
+        .frame(maxWidth: .infinity, alignment: .center)
     }
 }
 

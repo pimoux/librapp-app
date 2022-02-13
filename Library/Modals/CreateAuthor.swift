@@ -10,6 +10,8 @@ import SwiftUI
 struct CreateAuthor: View {
     @State private var authorData: CreateAuthorModel = CreateAuthorModel()
     @State private var isAlert: Bool = false
+    @State private var shouldAnimate = false
+    @State private var displayLoading = false
     @Environment(\.presentationMode) var presentationMode
     @EnvironmentObject var authorVM: AuthorViewModel
     
@@ -40,6 +42,10 @@ struct CreateAuthor: View {
                         InputField(header: "Lieu d'habitation", textContent: $authorData.location)
                         Button {
                             if authorData.firstname != "" && authorData.lastname != "" && authorData.location != "" && authorData.datns <= Date.now {
+                                self.displayLoading.toggle()
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) {
+                                    self.shouldAnimate.toggle()
+                                }
                                 let body: [String: Any] = [
                                     "firstname": authorData.firstname,
                                     "lastname": authorData.lastname,
@@ -47,20 +53,30 @@ struct CreateAuthor: View {
                                     "location": authorData.location
                                 ]
                                 authorVM.createAuthor(body: body)
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 100) {
+                                    self.displayLoading.toggle()
+                                    self.shouldAnimate.toggle()
+                                }
                                 presentationMode.wrappedValue.dismiss()
                             } else {
                                 isAlert = true
                             }
                         } label: {
-                            Text("Ajouter")
-                                .bold()
-                                .font(.title3)
-                                .frame(maxWidth: .infinity)
-                                .padding(.vertical)
-                                .background(Color("darkBlue"))
-                                .foregroundColor(.white)
-                                .cornerRadius(10)
+                            if displayLoading {
+                                LoadingCircles(shouldAnimate: shouldAnimate)
+                                    .padding(.vertical)
+                            } else {
+                                Text("Ajouter")
+                                    .bold()
+                                    .font(.title3)
+                                    .frame(maxWidth: .infinity)
+                                    .padding(.vertical)
+                                    .background(Color("darkBlue"))
+                                    .foregroundColor(.white)
+                                    .cornerRadius(10)
+                            }
                         }
+                        .disabled(shouldAnimate)
                     }
                 }
             }
