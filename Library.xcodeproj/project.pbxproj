@@ -10,6 +10,7 @@
 		562350552798777E002D6A90 /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562350542798777E002D6A90 /* InputField.swift */; };
 		5656FB4E27A97D2400620259 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656FB4D27A97D2400620259 /* Register.swift */; };
 		5656FB5427A9872F00620259 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656FB5327A9872F00620259 /* Login.swift */; };
+		566D361E27B6C97B007ED5AF /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D361D27B6C97B007ED5AF /* Test.swift */; };
 		5671A0E127B16AD20012C1BD /* DataRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5671A0E027B16AD20012C1BD /* DataRow.swift */; };
 		5671A0E327B17CE20012C1BD /* CircleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5671A0E227B17CE20012C1BD /* CircleItem.swift */; };
 		5671A0E527B17FFD0012C1BD /* EntryField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5671A0E427B17FFD0012C1BD /* EntryField.swift */; };
@@ -40,6 +41,7 @@
 		56508185279718C8007F599D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5656FB4D27A97D2400620259 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		5656FB5327A9872F00620259 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		566D361D27B6C97B007ED5AF /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		5671A0E027B16AD20012C1BD /* DataRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRow.swift; sourceTree = "<group>"; };
 		5671A0E227B17CE20012C1BD /* CircleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleItem.swift; sourceTree = "<group>"; };
 		5671A0E427B17FFD0012C1BD /* EntryField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryField.swift; sourceTree = "<group>"; };
@@ -175,6 +177,7 @@
 				56A150C72791C71200A02775 /* Modals */,
 				561F45CB278DE6490007E3C4 /* Utils */,
 				567A79A227B02BF900062F8D /* Views */,
+				566D361D27B6C97B007ED5AF /* Test.swift */,
 				56873F072782391000AD73E7 /* LibraryApp.swift */,
 				56873F0B2782391500AD73E7 /* Assets.xcassets */,
 				56873F0D2782391500AD73E7 /* Preview Content */,
@@ -299,6 +302,7 @@
 				569C912327B5573100FA297D /* AuthViewModel.swift in Sources */,
 				56A150C92791C72A00A02775 /* CreateBook.swift in Sources */,
 				5656FB4E27A97D2400620259 /* Register.swift in Sources */,
+				566D361E27B6C97B007ED5AF /* Test.swift in Sources */,
 				5671A0E327B17CE20012C1BD /* CircleItem.swift in Sources */,
 				56954599278F1D750057FA8F /* BookDetail.swift in Sources */,
 			);
