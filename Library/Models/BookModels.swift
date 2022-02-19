@@ -13,6 +13,9 @@ struct BookModel: Decodable {
     var nbPages: Int?
     var prix: Double?
     var author: AuthorModel?
+    var createdAt: String
+    var updatedAt: String
+    var fileUrl: String?
 }
 
 struct BooksResponse: Decodable {

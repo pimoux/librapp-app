@@ -16,7 +16,7 @@ class BookViewModel: ObservableObject {
     }
     
     public func getBooks() {
-        guard let url = URL(string: "\(baseURL)/books") else {
+        guard let url = URL(string: "\(baseURL)/api/books") else {
             return
         }
         
@@ -57,7 +57,7 @@ class BookViewModel: ObservableObject {
     }
     
     public func createBook(body: [String: Any]) {
-        guard let url = URL(string: "\(baseURL)/books") else {
+        guard let url = URL(string: "\(baseURL)/api/books") else {
             return
         }
         

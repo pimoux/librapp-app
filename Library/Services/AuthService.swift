@@ -8,7 +8,7 @@
 import Foundation
 
 //let baseURL: String = "https://librapp-back.herokuapp.com/api"
-let baseURL: String = "http://localhost:8000/api"
+let baseURL: String = "http://localhost:8000"
 
 enum AuthenticationError: Error {
     case invalidCredentials
@@ -18,7 +18,7 @@ enum AuthenticationError: Error {
 class AuthService {
     
     func login(credentials: LoginModel, completion: @escaping (Result<String, AuthenticationError>) -> Void) {
-        guard let url = URL(string: "\(baseURL)/login_check") else {
+        guard let url = URL(string: "\(baseURL)/api/login_check") else {
             completion(.failure(.custom(errorMessage: "URL incorrecte")))
             return
         }

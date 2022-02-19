@@ -66,9 +66,7 @@ struct CreateBook: View {
                         }
                         Section(header: Text("")) {
                             Picker("Auteur", selection: $bookData.selectedAuthor) {
-                                ForEach(authorVM.authors.sorted{ (cur, new) in
-                                    return cur.firstname < new.firstname
-                                }, id: \.id) { author in
+                                ForEach(authorVM.authors, id: \.id) { author in
                                     Text("\(author.firstname) \(author.lastname)").tag(author.iri!)
                                 }
                                 .navigationBarTitle("Auteurs disponible")

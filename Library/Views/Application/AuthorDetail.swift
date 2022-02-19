@@ -19,21 +19,6 @@ struct AuthorDetail: View {
             .foregroundColor(.black)
     }
     
-    public func formatDate(date: String) -> String {
-        let dateFormatter = ISO8601DateFormatter()
-        let outDateFormatter: DateFormatter = {
-                let df = DateFormatter()
-                df.dateFormat = "d MMMM yyyy"
-                df.locale = Locale(identifier: "fr-FR")
-                return df
-            }()
-        if let isoDate = dateFormatter.date(from: date) {
-            return outDateFormatter.string(from: isoDate)
-        }
-        
-        return "error"
-    }
-    
     public func getAuthorBooks() {
         guard let url = URL(string: "\(baseURL)/authors/\(author.id!)/books") else {
             return
@@ -76,7 +61,7 @@ struct AuthorDetail: View {
                     DataRow(label: "ID", data: String(author.id!))
                     DataRow(label: "Prénom", data: author.firstname)
                     DataRow(label: "Nom", data: author.lastname)
-                    DataRow(label: "Date de naissance", data: formatDate(date: author.datns!))
+                    DataRow(label: "Date de naissance", data: Date.formatDate(date: author.datns!))
                     DataRow(label: "Lieu d'habitation", data: author.location!)
                 }
                 

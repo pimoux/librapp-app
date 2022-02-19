@@ -9,6 +9,17 @@ import SwiftUI
 
 struct BookDetail: View {
     var book: BookModel
+    
+    func getDateFromISOString(_ isoDateString: String) -> Date {
+        let dateFormatter = ISO8601DateFormatter()
+        let date = dateFormatter.date(from: isoDateString)
+        if let date = date {
+            return date
+        } else {
+            return Date()
+        }
+    }
+    
     var body: some View {
         ZStack {
             Color.lightgraySet.edgesIgnoringSafeArea(.all)
@@ -23,10 +34,12 @@ struct BookDetail: View {
                     DataRow(label: "Nombre de pages", data: String(book.nbPages!))
                     DataRow(label: "Prix", data: "\(String(format: "%.2f", book.prix!))€")
                     DataRow(label: "Auteur", data: "\(book.author!.firstname) \(book.author!.lastname)")
+                    DataRow(label: "Créé le", data: Date.formatDate(date: book.createdAt))
                 }
             }
             .listStyle(.plain)
             .background(Color.lightgraySet)
+            Text("Dernière modification il y a \(getDateFromISOString(book.updatedAt).timeAgo())")
         }
     }
 }
@@ -46,7 +59,9 @@ struct BookDetail_Previews: PreviewProvider {
                     datns: "2022-01-02T19:30:13+00:00",
                     location: "France",
                     iri: "/api/authors/3"
-                )
+                ),
+                createdAt: "2022-02-17T16:44:01+00:00",
+                updatedAt: "2022-02-17T16:44:01+00:00"
             )
         )
     }
