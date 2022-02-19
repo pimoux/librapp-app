@@ -34,6 +34,7 @@
 		569C912327B5573100FA297D /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 569C912227B5573100FA297D /* AuthViewModel.swift */; };
 		56A150C92791C72A00A02775 /* CreateBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A150C82791C72A00A02775 /* CreateBook.swift */; };
 		56A150CB2791CEA200A02775 /* CreateAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A150CA2791CEA200A02775 /* CreateAuthor.swift */; };
+		56B6B3CB27C147B400080929 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B6B3CA27C147B400080929 /* ImagePicker.swift */; };
 		56E9AB782799B28400CD1F92 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E9AB772799B28400CD1F92 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
@@ -67,6 +68,7 @@
 		569C912227B5573100FA297D /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		56A150C82791C72A00A02775 /* CreateBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBook.swift; sourceTree = "<group>"; };
 		56A150CA2791CEA200A02775 /* CreateAuthor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAuthor.swift; sourceTree = "<group>"; };
+		56B6B3CA27C147B400080929 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		56E9AB772799B28400CD1F92 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,6 +202,7 @@
 			isa = PBXGroup;
 			children = (
 				569C912027B54DBA00FA297D /* AuthService.swift */,
+				56B6B3CA27C147B400080929 /* ImagePicker.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -286,6 +289,7 @@
 				5695459B278F1D820057FA8F /* AuthorDetail.swift in Sources */,
 				567A799F27B027D900062F8D /* AuthorViewModel.swift in Sources */,
 				56873F082782391000AD73E7 /* LibraryApp.swift in Sources */,
+				56B6B3CB27C147B400080929 /* ImagePicker.swift in Sources */,
 				567A799D27B027A200062F8D /* BookViewModel.swift in Sources */,
 				567A799A27B0242800062F8D /* AuthorModels.swift in Sources */,
 				56732E682783895200CB50B5 /* Authors.swift in Sources */,

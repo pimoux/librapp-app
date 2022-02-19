@@ -9,6 +9,8 @@ import SwiftUI
 
 struct BookDetail: View {
     var book: BookModel
+    @State private var selectedImage: UIImage = UIImage()
+    @State private var openPhotoLibrary: Bool = false
     
     func getDateFromISOString(_ isoDateString: String) -> Date {
         let dateFormatter = ISO8601DateFormatter()
@@ -39,7 +41,18 @@ struct BookDetail: View {
             }
             .listStyle(.plain)
             .background(Color.lightgraySet)
-            Text("Dernière modification il y a \(getDateFromISOString(book.updatedAt).timeAgo())")
+            VStack {
+                Button {
+                    openPhotoLibrary = true
+                } label: {
+                    Text("Ajouter une image de couverture")
+                }
+
+                Text("Dernière modification de l'image il y a \(getDateFromISOString(book.updatedAt).timeAgo())")
+            }
+        }
+        .sheet(isPresented: $openPhotoLibrary) {
+            ImagePicker(selectedImage: $selectedImage, sourceType: .photoLibrary)
         }
     }
 }
