@@ -8,7 +8,7 @@
 import Foundation
 
 //let baseURL: String = "https://librapp-back.herokuapp.com/api"
-let baseURL: String = "http://localhost:8000"
+let baseURL: String = "http://127.0.0.1:8000"
 
 enum AuthenticationError: Error {
     case invalidCredentials

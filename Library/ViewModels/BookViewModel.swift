@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 class BookViewModel: ObservableObject {
     @Published var books = [BookModel]()
@@ -52,7 +53,6 @@ class BookViewModel: ObservableObject {
             } catch {
                 print("error: ", error)
             }
-
         }.resume()
     }
     
@@ -85,5 +85,62 @@ class BookViewModel: ObservableObject {
                 }
             }
         }.resume()
+    }
+    
+    public func publishCoverPage(id: Int, file: UIImage) {
+        guard let url = URL(string: "\(baseURL)/api/books/\(id)/image") else {
+            return
+        }
+        
+        guard let token = UserDefaults.standard.string(forKey: "jwt") else {
+            return
+        }
+        
+        guard let size = Double(file.getSizeIn(.megabyte)), size < 2 else {
+            print("The file is too large")
+            return
+        }
+        
+        let imageData: Data = file.jpegData(compressionQuality: 0.7) ?? Data()
+        
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
+        let bodyBoundary = "--------------------------\(UUID().uuidString)"
+        request.addValue("multipart/form-data; boundary=\(bodyBoundary)", forHTTPHeaderField: "Content-Type")
+        let requestData = createRequestBody(imageData: imageData, boundary: bodyBoundary, attachmentKey: "file", fileName: "myTestImage.jpg")
+        
+        request.addValue("\(requestData.count)", forHTTPHeaderField: "content-length")
+        request.httpBody = requestData
+        
+        URLSession.shared.dataTask(with: request) { _, response, _ in
+    
+            if let response = response as? HTTPURLResponse {
+                if response.statusCode == 201 {
+                    DispatchQueue.main.async {
+                        self.getBooks()
+                    }
+                } else if response.statusCode == 422 {
+                    print("status 422: server cannot execute the request correctly")
+                } else {
+                    print("an error occured")
+                }
+            }
+        }
+        .resume()
+    }
+    
+    func createRequestBody(imageData: Data, boundary: String, attachmentKey: String, fileName: String) -> Data{
+        let lineBreak = "\r\n"
+        var requestBody = Data()
+        
+        requestBody.append("\(lineBreak)--\(boundary + lineBreak)" .data(using: .utf8)!)
+        requestBody.append("Content-Disposition: form-data; name=\"\(attachmentKey)\"; filename=\"\(fileName)\"\(lineBreak)" .data(using: .utf8)!)
+        requestBody.append("Content-Type: image/png \(lineBreak + lineBreak)" .data(using: .utf8)!)
+        requestBody.append(imageData)
+        requestBody.append("\(lineBreak)--\(boundary)--\(lineBreak)" .data(using: .utf8)!)
+        
+        return requestBody
     }
 }

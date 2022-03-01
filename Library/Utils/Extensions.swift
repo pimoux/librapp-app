@@ -85,3 +85,32 @@ extension View {
         return UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     }
 }
+
+extension UIImage {
+
+    public enum DataUnits: String {
+        case byte, kilobyte, megabyte, gigabyte
+    }
+
+    func getSizeIn(_ type: DataUnits)-> String {
+
+        guard let data = self.jpegData(compressionQuality: 0.7) else {
+            return ""
+        }
+
+        var size: Double = 0.0
+
+        switch type {
+        case .byte:
+            size = Double(data.count)
+        case .kilobyte:
+            size = Double(data.count) / 1024
+        case .megabyte:
+            size = Double(data.count) / 1024 / 1024
+        case .gigabyte:
+            size = Double(data.count) / 1024 / 1024 / 1024
+        }
+
+        return String(format: "%.2f", size)
+    }
+}

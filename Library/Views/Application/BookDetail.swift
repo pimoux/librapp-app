@@ -9,8 +9,10 @@ import SwiftUI
 
 struct BookDetail: View {
     var book: BookModel
+    @EnvironmentObject var bookVM: BookViewModel
     @State private var selectedImage: UIImage? = nil
     @State private var openPhotoLibrary: Bool = false
+    @State private var isCoverPageAdded: Bool = false
     
     func getDateFromISOString(_ isoDateString: String) -> Date {
         let dateFormatter = ISO8601DateFormatter()
@@ -73,7 +75,7 @@ struct BookDetail: View {
                                 .scaledToFit()
                                 .frame(maxWidth: 220, maxHeight: 330)
                             Button {
-                                
+                                bookVM.publishCoverPage(id: book.id!, file: selectedImage!)
                             } label: {
                                 Text("Sauvegarder")
                             }
@@ -111,5 +113,6 @@ struct BookDetail_Previews: PreviewProvider {
                 updatedAt: "2022-02-17T16:44:01+00:00"
             )
         )
+            .environmentObject(BookViewModel())
     }
 }
