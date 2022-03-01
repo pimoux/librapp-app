@@ -1,12 +1,11 @@
 //
-//  Extensions.swift
+//  Date.swift
 //  Library
 //
-//  Created by LUKA Vouillemont on 20/01/2022.
+//  Created by LUKA Vouillemont on 01/03/2022.
 //
 
 import Foundation
-import SwiftUI
 
 extension Date {
     
@@ -64,53 +63,4 @@ extension Date {
             let diff = Calendar.current.dateComponents([.year], from: self, to: Date()).year ?? 0
             return "\(diff) année\(diff <= 1 ? "" : "s")"
         }
-}
-
-extension Color {
-    static let lightgraySet = Color("lightgray")
-    static let lightgrayFieldSet = Color("lightgrayField")
-    static let lightgrayNavSet = Color("lightgrayNav")
-    static let lightgrayEditItemSet = Color("lightgrayEditItem")
-    static let darkBlueSet = Color("darkBlue")
-    static let turquoiseSet = Color("turquoise")
-    static let darkSet = Color("dark")
-}
-
-extension View {
-    func getRect() -> CGRect {
-        return UIScreen.main.bounds
-    }
-    
-    func getSafeArea() -> UIEdgeInsets {
-        return UIApplication.shared.windows.first?.safeAreaInsets ?? UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-    }
-}
-
-extension UIImage {
-
-    public enum DataUnits: String {
-        case byte, kilobyte, megabyte, gigabyte
-    }
-
-    func getSizeIn(_ type: DataUnits)-> String {
-
-        guard let data = self.jpegData(compressionQuality: 0.7) else {
-            return ""
-        }
-
-        var size: Double = 0.0
-
-        switch type {
-        case .byte:
-            size = Double(data.count)
-        case .kilobyte:
-            size = Double(data.count) / 1024
-        case .megabyte:
-            size = Double(data.count) / 1024 / 1024
-        case .gigabyte:
-            size = Double(data.count) / 1024 / 1024 / 1024
-        }
-
-        return String(format: "%.2f", size)
-    }
 }

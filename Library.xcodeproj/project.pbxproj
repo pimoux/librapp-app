@@ -7,11 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		56134A9127CE80D000355F43 /* DateExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56134A9027CE80D000355F43 /* DateExtension.swift */; };
+		56134A9327CE80F200355F43 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56134A9227CE80F200355F43 /* ColorExtension.swift */; };
+		56134A9527CE812400355F43 /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56134A9427CE812400355F43 /* ViewExtension.swift */; };
+		56134A9727CE815500355F43 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56134A9627CE815500355F43 /* UIImageExtension.swift */; };
 		562350552798777E002D6A90 /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 562350542798777E002D6A90 /* InputField.swift */; };
 		5656FB4E27A97D2400620259 /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656FB4D27A97D2400620259 /* Register.swift */; };
 		5656FB5427A9872F00620259 /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5656FB5327A9872F00620259 /* Login.swift */; };
 		5664636A27B94B7B0065A96A /* LoadingCircles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5664636927B94B7A0065A96A /* LoadingCircles.swift */; };
-		566D361E27B6C97B007ED5AF /* Test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 566D361D27B6C97B007ED5AF /* Test.swift */; };
 		5671A0E127B16AD20012C1BD /* DataRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5671A0E027B16AD20012C1BD /* DataRow.swift */; };
 		5671A0E327B17CE20012C1BD /* CircleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5671A0E227B17CE20012C1BD /* CircleItem.swift */; };
 		5671A0E527B17FFD0012C1BD /* EntryField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5671A0E427B17FFD0012C1BD /* EntryField.swift */; };
@@ -35,16 +38,18 @@
 		56A150C92791C72A00A02775 /* CreateBook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A150C82791C72A00A02775 /* CreateBook.swift */; };
 		56A150CB2791CEA200A02775 /* CreateAuthor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56A150CA2791CEA200A02775 /* CreateAuthor.swift */; };
 		56B6B3CB27C147B400080929 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56B6B3CA27C147B400080929 /* ImagePicker.swift */; };
-		56E9AB782799B28400CD1F92 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56E9AB772799B28400CD1F92 /* Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		56134A9027CE80D000355F43 /* DateExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtension.swift; sourceTree = "<group>"; };
+		56134A9227CE80F200355F43 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
+		56134A9427CE812400355F43 /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
+		56134A9627CE815500355F43 /* UIImageExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		562350542798777E002D6A90 /* InputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
 		56508185279718C8007F599D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		5656FB4D27A97D2400620259 /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		5656FB5327A9872F00620259 /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
 		5664636927B94B7A0065A96A /* LoadingCircles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCircles.swift; sourceTree = "<group>"; };
-		566D361D27B6C97B007ED5AF /* Test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Test.swift; sourceTree = "<group>"; };
 		5671A0E027B16AD20012C1BD /* DataRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRow.swift; sourceTree = "<group>"; };
 		5671A0E227B17CE20012C1BD /* CircleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleItem.swift; sourceTree = "<group>"; };
 		5671A0E427B17FFD0012C1BD /* EntryField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryField.swift; sourceTree = "<group>"; };
@@ -69,7 +74,6 @@
 		56A150C82791C72A00A02775 /* CreateBook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateBook.swift; sourceTree = "<group>"; };
 		56A150CA2791CEA200A02775 /* CreateAuthor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAuthor.swift; sourceTree = "<group>"; };
 		56B6B3CA27C147B400080929 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
-		56E9AB772799B28400CD1F92 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,12 +87,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		561F45CB278DE6490007E3C4 /* Utils */ = {
+		56134A8F27CE80BC00355F43 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				56E9AB772799B28400CD1F92 /* Extensions.swift */,
+				56134A9027CE80D000355F43 /* DateExtension.swift */,
+				56134A9227CE80F200355F43 /* ColorExtension.swift */,
+				56134A9427CE812400355F43 /* ViewExtension.swift */,
+				56134A9627CE815500355F43 /* UIImageExtension.swift */,
 			);
-			path = Utils;
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		562350532798772A002D6A90 /* Components */ = {
@@ -174,15 +181,14 @@
 		56873F062782391000AD73E7 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				56134A8F27CE80BC00355F43 /* Extensions */,
 				569C911F27B54D9A00FA297D /* Services */,
 				56508185279718C8007F599D /* Info.plist */,
 				567A799B27B0251B00062F8D /* ViewModels */,
 				567A799427B023E700062F8D /* Models */,
 				562350532798772A002D6A90 /* Components */,
 				56A150C72791C71200A02775 /* Modals */,
-				561F45CB278DE6490007E3C4 /* Utils */,
 				567A79A227B02BF900062F8D /* Views */,
-				566D361D27B6C97B007ED5AF /* Test.swift */,
 				56873F072782391000AD73E7 /* LibraryApp.swift */,
 				56873F0B2782391500AD73E7 /* Assets.xcassets */,
 				56873F0D2782391500AD73E7 /* Preview Content */,
@@ -303,16 +309,18 @@
 				567A799827B0241900062F8D /* BookModels.swift in Sources */,
 				56732E662783892800CB50B5 /* Panel.swift in Sources */,
 				569C912127B54DBA00FA297D /* AuthService.swift in Sources */,
+				56134A9327CE80F200355F43 /* ColorExtension.swift in Sources */,
 				5671A0E127B16AD20012C1BD /* DataRow.swift in Sources */,
-				56E9AB782799B28400CD1F92 /* Extensions.swift in Sources */,
 				56732E6A2783895F00CB50B5 /* Books.swift in Sources */,
 				5656FB5427A9872F00620259 /* Login.swift in Sources */,
 				569C912327B5573100FA297D /* AuthViewModel.swift in Sources */,
 				56A150C92791C72A00A02775 /* CreateBook.swift in Sources */,
+				56134A9527CE812400355F43 /* ViewExtension.swift in Sources */,
+				56134A9127CE80D000355F43 /* DateExtension.swift in Sources */,
 				5656FB4E27A97D2400620259 /* Register.swift in Sources */,
-				566D361E27B6C97B007ED5AF /* Test.swift in Sources */,
 				5671A0E327B17CE20012C1BD /* CircleItem.swift in Sources */,
 				56954599278F1D750057FA8F /* BookDetail.swift in Sources */,
+				56134A9727CE815500355F43 /* UIImageExtension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
