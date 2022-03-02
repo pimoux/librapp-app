@@ -87,7 +87,7 @@ class BookViewModel: ObservableObject {
         }.resume()
     }
     
-    public func publishCoverPage(id: Int, file: UIImage) {
+    public func publishCoverPage(id: Int, file: UIImage, filename: String) {
         guard let url = URL(string: "\(Endpoints.devBaseUrl.rawValue)/api/books/\(id)/image") else {
             return
         }
@@ -109,7 +109,7 @@ class BookViewModel: ObservableObject {
         request.addValue("Bearer \(token)", forHTTPHeaderField: "Authorization")
         let bodyBoundary = "--------------------------\(UUID().uuidString)"
         request.addValue("multipart/form-data; boundary=\(bodyBoundary)", forHTTPHeaderField: "Content-Type")
-        let requestData = createRequestBody(imageData: imageData, boundary: bodyBoundary, attachmentKey: "file", fileName: "myTestImage.jpg")
+        let requestData = createRequestBody(imageData: imageData, boundary: bodyBoundary, attachmentKey: "file", fileName: filename)
         
         request.addValue("\(requestData.count)", forHTTPHeaderField: "content-length")
         request.httpBody = requestData

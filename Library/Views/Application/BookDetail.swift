@@ -50,17 +50,6 @@ struct BookDetail: View {
                     .foregroundColor(.black)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding()
-                if selectedImage != nil {
-                    Button {
-                        selectedImage = nil
-                    } label: {
-                        Text("supprimer la page de couverture")
-                            .fontWeight(.medium)
-                            .foregroundColor(.red)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(.leading)
-                    }
-                }
                 ScrollView {
                     VStack {
                         Button {

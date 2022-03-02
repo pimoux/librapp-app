@@ -36,9 +36,14 @@ struct ImagePicker: UIViewControllerRepresentable {
         }
         
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
+            if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage,
+               let filename = info[UIImagePickerController.InfoKey.imageURL] as? URL {
                 parent.selectedImage = image
-                self.parent.bookVM.publishCoverPage(id: self.parent.bookId, file: image)
+                self.parent.bookVM.publishCoverPage(
+                    id: self.parent.bookId,
+                    file: image,
+                    filename: filename.lastPathComponent
+                )
             }
             
             parent.presentationMode.wrappedValue.dismiss()
