@@ -20,7 +20,7 @@ struct AuthorDetail: View {
     }
     
     public func getAuthorBooks() {
-        guard let url = URL(string: "\(baseURL)/authors/\(author.id!)/books") else {
+        guard let url = URL(string: "\(Endpoints.devBaseUrl.rawValue)/authors/\(author.id!)/books") else {
             return
         }
         

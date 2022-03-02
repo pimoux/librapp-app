@@ -16,7 +16,7 @@ class AuthorViewModel: ObservableObject {
     }
     
     public func getAuthors() {
-        guard let url = URL(string: "\(baseURL)/api/authors") else {
+        guard let url = URL(string: "\(Endpoints.devBaseUrl.rawValue)/api/authors") else {
             return
         }
         
@@ -56,7 +56,7 @@ class AuthorViewModel: ObservableObject {
     }
     
     public func createAuthor(body: [String: Any]) {
-        guard let url = URL(string: "\(baseURL)/api/authors") else {
+        guard let url = URL(string: "\(Endpoints.devBaseUrl.rawValue)/api/authors") else {
             return
         }
         

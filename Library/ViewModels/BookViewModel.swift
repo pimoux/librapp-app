@@ -17,7 +17,7 @@ class BookViewModel: ObservableObject {
     }
     
     public func getBooks() {
-        guard let url = URL(string: "\(baseURL)/api/books") else {
+        guard let url = URL(string: "\(Endpoints.devBaseUrl.rawValue)/api/books") else {
             return
         }
         
@@ -57,7 +57,7 @@ class BookViewModel: ObservableObject {
     }
     
     public func createBook(body: [String: Any]) {
-        guard let url = URL(string: "\(baseURL)/api/books") else {
+        guard let url = URL(string: "\(Endpoints.devBaseUrl.rawValue)/api/books") else {
             return
         }
         
@@ -88,7 +88,7 @@ class BookViewModel: ObservableObject {
     }
     
     public func publishCoverPage(id: Int, file: UIImage) {
-        guard let url = URL(string: "\(baseURL)/api/books/\(id)/image") else {
+        guard let url = URL(string: "\(Endpoints.devBaseUrl.rawValue)/api/books/\(id)/image") else {
             return
         }
         

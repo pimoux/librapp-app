@@ -11,6 +11,8 @@ import UIKit
 struct ImagePicker: UIViewControllerRepresentable {
     
     @Binding var selectedImage: UIImage?
+    var bookVM: BookViewModel
+    var bookId: Int
     @Environment(\.presentationMode) private var presentationMode
     var sourceType: UIImagePickerController.SourceType = .photoLibrary
     
@@ -36,6 +38,7 @@ struct ImagePicker: UIViewControllerRepresentable {
         func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
             if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
                 parent.selectedImage = image
+                self.parent.bookVM.publishCoverPage(id: self.parent.bookId, file: image)
             }
             
             parent.presentationMode.wrappedValue.dismiss()
